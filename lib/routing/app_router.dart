@@ -1,6 +1,10 @@
+import 'package:fiction_times_app/pages/drafts/draft_new_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../domain/article/article.dart';
+import '../pages/article/article_page.dart';
+import '../pages/not_found_page.dart';
 import '../pages/splash/splash_page.dart';
 import '../pages/splash/splash_page_notifier.dart';
 import '../pages/splash/splash_page_state.dart';
@@ -47,16 +51,21 @@ final goRouterProvider = Provider<GoRouter>(
           builder: (context, state) {
             final articleId = state.pathParameters['id'];
             if (articleId == null) {
-              // TODO: 404ページを作成
-              // return const NotFoundScreen();
+              return const NotFoundPage();
             }
-            return SplashPage();
-            // return ArticlePage(
-            //   articleId: articleId,
-            //   article: state.extra as Article?,
-            // );
+            return ArticlePage(
+              articleId: articleId,
+              article: state.extra as Article?,
+            );
           },
         ),
+        GoRoute(
+          path: AppRoute.draftNew.path,
+          name: AppRoute.draftNew.path,
+          builder: (context, state) {
+            return const DraftNewPage();
+          },
+        )
       ],
     );
   },
@@ -68,7 +77,9 @@ final appRouterProvider = Provider.autoDispose<AppRouter>(
 
 class AppRouter {
   const AppRouter(this.ref);
+
   final Ref ref;
+
   GoRouter get goRouter => ref.watch(goRouterProvider);
 
   void navigate(String? path) {

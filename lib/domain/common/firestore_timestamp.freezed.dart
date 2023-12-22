@@ -89,18 +89,19 @@ class _$FirestoreTimestampCopyWithImpl<$Res, $Val extends FirestoreTimestamp>
 }
 
 /// @nodoc
-abstract class _$$DateCopyWith<$Res> {
-  factory _$$DateCopyWith(_$Date value, $Res Function(_$Date) then) =
-      __$$DateCopyWithImpl<$Res>;
+abstract class _$$DateImplCopyWith<$Res> {
+  factory _$$DateImplCopyWith(
+          _$DateImpl value, $Res Function(_$DateImpl) then) =
+      __$$DateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime date});
 }
 
 /// @nodoc
-class __$$DateCopyWithImpl<$Res>
-    extends _$FirestoreTimestampCopyWithImpl<$Res, _$Date>
-    implements _$$DateCopyWith<$Res> {
-  __$$DateCopyWithImpl(_$Date _value, $Res Function(_$Date) _then)
+class __$$DateImplCopyWithImpl<$Res>
+    extends _$FirestoreTimestampCopyWithImpl<$Res, _$DateImpl>
+    implements _$$DateImplCopyWith<$Res> {
+  __$$DateImplCopyWithImpl(_$DateImpl _value, $Res Function(_$DateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +109,7 @@ class __$$DateCopyWithImpl<$Res>
   $Res call({
     Object? date = null,
   }) {
-    return _then(_$Date(
+    return _then(_$DateImpl(
       null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -119,10 +120,11 @@ class __$$DateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Date implements Date {
-  const _$Date(this.date, {final String? $type}) : $type = $type ?? 'date';
+class _$DateImpl implements Date {
+  const _$DateImpl(this.date, {final String? $type}) : $type = $type ?? 'date';
 
-  factory _$Date.fromJson(Map<String, dynamic> json) => _$$DateFromJson(json);
+  factory _$DateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DateImplFromJson(json);
 
   @override
   final DateTime date;
@@ -136,10 +138,10 @@ class _$Date implements Date {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Date &&
+            other is _$DateImpl &&
             (identical(other.date, date) || other.date == date));
   }
 
@@ -150,8 +152,8 @@ class _$Date implements Date {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DateCopyWith<_$Date> get copyWith =>
-      __$$DateCopyWithImpl<_$Date>(this, _$identity);
+  _$$DateImplCopyWith<_$DateImpl> get copyWith =>
+      __$$DateImplCopyWithImpl<_$DateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -217,46 +219,47 @@ class _$Date implements Date {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DateToJson(
+    return _$$DateImplToJson(
       this,
     );
   }
 }
 
 abstract class Date implements FirestoreTimestamp {
-  const factory Date(final DateTime date) = _$Date;
+  const factory Date(final DateTime date) = _$DateImpl;
 
-  factory Date.fromJson(Map<String, dynamic> json) = _$Date.fromJson;
+  factory Date.fromJson(Map<String, dynamic> json) = _$DateImpl.fromJson;
 
   DateTime get date;
   @JsonKey(ignore: true)
-  _$$DateCopyWith<_$Date> get copyWith => throw _privateConstructorUsedError;
+  _$$DateImplCopyWith<_$DateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ServerTimestampCopyWith<$Res> {
-  factory _$$ServerTimestampCopyWith(
-          _$ServerTimestamp value, $Res Function(_$ServerTimestamp) then) =
-      __$$ServerTimestampCopyWithImpl<$Res>;
+abstract class _$$ServerTimestampImplCopyWith<$Res> {
+  factory _$$ServerTimestampImplCopyWith(_$ServerTimestampImpl value,
+          $Res Function(_$ServerTimestampImpl) then) =
+      __$$ServerTimestampImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ServerTimestampCopyWithImpl<$Res>
-    extends _$FirestoreTimestampCopyWithImpl<$Res, _$ServerTimestamp>
-    implements _$$ServerTimestampCopyWith<$Res> {
-  __$$ServerTimestampCopyWithImpl(
-      _$ServerTimestamp _value, $Res Function(_$ServerTimestamp) _then)
+class __$$ServerTimestampImplCopyWithImpl<$Res>
+    extends _$FirestoreTimestampCopyWithImpl<$Res, _$ServerTimestampImpl>
+    implements _$$ServerTimestampImplCopyWith<$Res> {
+  __$$ServerTimestampImplCopyWithImpl(
+      _$ServerTimestampImpl _value, $Res Function(_$ServerTimestampImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ServerTimestamp implements ServerTimestamp {
-  const _$ServerTimestamp({final String? $type})
+class _$ServerTimestampImpl implements ServerTimestamp {
+  const _$ServerTimestampImpl({final String? $type})
       : $type = $type ?? 'serverTimestamp';
 
-  factory _$ServerTimestamp.fromJson(Map<String, dynamic> json) =>
-      _$$ServerTimestampFromJson(json);
+  factory _$ServerTimestampImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ServerTimestampImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -267,9 +270,9 @@ class _$ServerTimestamp implements ServerTimestamp {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ServerTimestamp);
+        (other.runtimeType == runtimeType && other is _$ServerTimestampImpl);
   }
 
   @JsonKey(ignore: true)
@@ -340,15 +343,15 @@ class _$ServerTimestamp implements ServerTimestamp {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ServerTimestampToJson(
+    return _$$ServerTimestampImplToJson(
       this,
     );
   }
 }
 
 abstract class ServerTimestamp implements FirestoreTimestamp {
-  const factory ServerTimestamp() = _$ServerTimestamp;
+  const factory ServerTimestamp() = _$ServerTimestampImpl;
 
   factory ServerTimestamp.fromJson(Map<String, dynamic> json) =
-      _$ServerTimestamp.fromJson;
+      _$ServerTimestampImpl.fromJson;
 }

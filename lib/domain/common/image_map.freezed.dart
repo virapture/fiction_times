@@ -79,21 +79,22 @@ class _$ImageMapCopyWithImpl<$Res, $Val extends ImageMap>
 }
 
 /// @nodoc
-abstract class _$$_ImageMapCopyWith<$Res> implements $ImageMapCopyWith<$Res> {
-  factory _$$_ImageMapCopyWith(
-          _$_ImageMap value, $Res Function(_$_ImageMap) then) =
-      __$$_ImageMapCopyWithImpl<$Res>;
+abstract class _$$ImageMapImplCopyWith<$Res>
+    implements $ImageMapCopyWith<$Res> {
+  factory _$$ImageMapImplCopyWith(
+          _$ImageMapImpl value, $Res Function(_$ImageMapImpl) then) =
+      __$$ImageMapImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int width, int height, String path, String blurHash});
 }
 
 /// @nodoc
-class __$$_ImageMapCopyWithImpl<$Res>
-    extends _$ImageMapCopyWithImpl<$Res, _$_ImageMap>
-    implements _$$_ImageMapCopyWith<$Res> {
-  __$$_ImageMapCopyWithImpl(
-      _$_ImageMap _value, $Res Function(_$_ImageMap) _then)
+class __$$ImageMapImplCopyWithImpl<$Res>
+    extends _$ImageMapCopyWithImpl<$Res, _$ImageMapImpl>
+    implements _$$ImageMapImplCopyWith<$Res> {
+  __$$ImageMapImplCopyWithImpl(
+      _$ImageMapImpl _value, $Res Function(_$ImageMapImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +105,7 @@ class __$$_ImageMapCopyWithImpl<$Res>
     Object? path = null,
     Object? blurHash = null,
   }) {
-    return _then(_$_ImageMap(
+    return _then(_$ImageMapImpl(
       width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -127,13 +128,13 @@ class __$$_ImageMapCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ImageMap extends _ImageMap {
-  const _$_ImageMap(
+class _$ImageMapImpl extends _ImageMap {
+  const _$ImageMapImpl(
       {this.width = 0, this.height = 0, this.path = '', this.blurHash = ''})
       : super._();
 
-  factory _$_ImageMap.fromJson(Map<String, dynamic> json) =>
-      _$$_ImageMapFromJson(json);
+  factory _$ImageMapImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ImageMapImplFromJson(json);
 
   @override
   @JsonKey()
@@ -154,10 +155,10 @@ class _$_ImageMap extends _ImageMap {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ImageMap &&
+            other is _$ImageMapImpl &&
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.path, path) || other.path == path) &&
@@ -172,12 +173,12 @@ class _$_ImageMap extends _ImageMap {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImageMapCopyWith<_$_ImageMap> get copyWith =>
-      __$$_ImageMapCopyWithImpl<_$_ImageMap>(this, _$identity);
+  _$$ImageMapImplCopyWith<_$ImageMapImpl> get copyWith =>
+      __$$ImageMapImplCopyWithImpl<_$ImageMapImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImageMapToJson(
+    return _$$ImageMapImplToJson(
       this,
     );
   }
@@ -188,10 +189,11 @@ abstract class _ImageMap extends ImageMap {
       {final int width,
       final int height,
       final String path,
-      final String blurHash}) = _$_ImageMap;
+      final String blurHash}) = _$ImageMapImpl;
   const _ImageMap._() : super._();
 
-  factory _ImageMap.fromJson(Map<String, dynamic> json) = _$_ImageMap.fromJson;
+  factory _ImageMap.fromJson(Map<String, dynamic> json) =
+      _$ImageMapImpl.fromJson;
 
   @override
   int get width;
@@ -203,6 +205,6 @@ abstract class _ImageMap extends ImageMap {
   String get blurHash;
   @override
   @JsonKey(ignore: true)
-  _$$_ImageMapCopyWith<_$_ImageMap> get copyWith =>
+  _$$ImageMapImplCopyWith<_$ImageMapImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

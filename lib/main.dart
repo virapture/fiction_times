@@ -4,7 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'routing/app_router.dart';
 import 'utils/overlay_loading.dart';
@@ -14,6 +16,8 @@ Future<void> main() async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      GoRouter.optionURLReflectsImperativeAPIs = true;
+      setPathUrlStrategy();
       await Firebase.initializeApp(
         options: const FirebaseOptions(
             apiKey: "",

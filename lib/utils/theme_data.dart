@@ -100,14 +100,14 @@ class OriginalTheme {
     toggleButtonsTheme: const ToggleButtonsThemeData(selectedColor: review),
   );
 
-  static const textPrimary = Color(0xff222222);
-  static const textSecondary = Color(0xff666666);
+  static const textPrimary = Color(0xff333333);
+  static const textSecondary = Color(0xff757575);
   static const textTertiary = Color(0xffAAAAAA);
 
   static const textQuaternary = Colors.white;
 
   static const backgroundPrimary = Colors.white;
-  static const backgroundSecondary = Color(0xffF1F1F1);
+  static const backgroundSecondary = Color(0xffF5F5F5);
   static const backgroundTertiary = Color(0xffCACACA);
   static const backgroundQuaternary = Color(0xff666666);
 
@@ -118,17 +118,17 @@ class OriginalTheme {
   static const dividerPrimary = Color(0xffCCCCCC);
   static const dividerSecondary = Color(0xffEEEEEE);
 
-  static const accent = Color(0xff537EF5);
+  static const accent = Color(0xff3B82F6);
   static const accentMiddle = Color(0xff8dadff);
-  static const accentLight = Color(0xffEEF2FE);
+  static const accentLight = Color(0xffDCEEFB);
   static const review = Color(0xffFFA133);
   static const link = Color(0xff1C76FC);
-  static const negative = Color(0xffD51A1A);
-  static const positive = Color(0xff02AA27);
+  static const negative = Color(0xffEF4444);
+  static const positive = Color(0xff10B981);
   static const caution = Color(0xffF6C00C);
 
   static final calendarHolidayBackground =
-      const Color(0xffD51A1A).withOpacity(0.1);
+      const Color(0xffEF4444).withOpacity(0.1);
 
   static const transparent = Colors.transparent;
 }

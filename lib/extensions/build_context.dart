@@ -41,7 +41,7 @@ extension BuildContextExtension on BuildContext {
   void positivePop() => Navigator.of(this).pop(true);
   void negativePop() => Navigator.of(this).pop(false);
 
-  void pushNamedString(
+  void _appPushNamedString(
     String path, {
     Map<String, String> params = const <String, String>{},
     Map<String, dynamic> queryParams = const <String, dynamic>{},
@@ -54,33 +54,33 @@ extension BuildContextExtension on BuildContext {
         extra: extra,
       );
 
-  void pushNamed(
-    AppRoute routes, {
+  void appPushNamed(
+    AppRoute route, {
     Map<String, String> params = const <String, String>{},
     Map<String, dynamic> queryParams = const <String, dynamic>{},
     Object? extra,
   }) =>
-      pushNamedString(
-        routes.path,
+      _appPushNamedString(
+        route.path,
         params: params,
         queryParams: queryParams,
         extra: extra,
       );
 
-  void goNamed(
-    AppRoute routes, {
+  void appGoNamed(
+    AppRoute route, {
     Map<String, String> params = const <String, String>{},
     Map<String, dynamic> queryParams = const <String, dynamic>{},
     Object? extra,
   }) =>
-      goNamedString(
-        routes.path,
+      _goNamedString(
+        route.path,
         params: params,
         queryParams: queryParams,
         extra: extra,
       );
 
-  void goNamedString(
+  void _goNamedString(
     String path, {
     Map<String, String> params = const <String, String>{},
     Map<String, dynamic> queryParams = const <String, dynamic>{},

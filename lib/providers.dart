@@ -7,6 +7,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'domain/article/article_repository.dart';
 import 'services/boot_loader_service.dart';
 import 'services/deep_link_service.dart';
 
@@ -50,4 +51,9 @@ final analyticsObserverProvider = Provider<FirebaseAnalyticsObserver>(
 
 final storageProvider = Provider<FirebaseStorage>(
   (_) => FirebaseStorage.instance,
+);
+
+// repository
+final articleRepositoryProvider = Provider<ArticleRepository>(
+  ArticleRepositoryImpl.new,
 );

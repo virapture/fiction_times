@@ -72,11 +72,11 @@ class _$SplashPageStateCopyWithImpl<$Res, $Val extends SplashPageState>
 }
 
 /// @nodoc
-abstract class _$$_SplashPageStateCopyWith<$Res>
+abstract class _$$SplashPageStateImplCopyWith<$Res>
     implements $SplashPageStateCopyWith<$Res> {
-  factory _$$_SplashPageStateCopyWith(
-          _$_SplashPageState value, $Res Function(_$_SplashPageState) then) =
-      __$$_SplashPageStateCopyWithImpl<$Res>;
+  factory _$$SplashPageStateImplCopyWith(_$SplashPageStateImpl value,
+          $Res Function(_$SplashPageStateImpl) then) =
+      __$$SplashPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -86,11 +86,11 @@ abstract class _$$_SplashPageStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SplashPageStateCopyWithImpl<$Res>
-    extends _$SplashPageStateCopyWithImpl<$Res, _$_SplashPageState>
-    implements _$$_SplashPageStateCopyWith<$Res> {
-  __$$_SplashPageStateCopyWithImpl(
-      _$_SplashPageState _value, $Res Function(_$_SplashPageState) _then)
+class __$$SplashPageStateImplCopyWithImpl<$Res>
+    extends _$SplashPageStateCopyWithImpl<$Res, _$SplashPageStateImpl>
+    implements _$$SplashPageStateImplCopyWith<$Res> {
+  __$$SplashPageStateImplCopyWithImpl(
+      _$SplashPageStateImpl _value, $Res Function(_$SplashPageStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_SplashPageStateCopyWithImpl<$Res>
     Object? bootState = null,
     Object? currentState = null,
   }) {
-    return _then(_$_SplashPageState(
+    return _then(_$SplashPageStateImpl(
       navigatePageRoute: null == navigatePageRoute
           ? _value.navigatePageRoute
           : navigatePageRoute // ignore: cast_nullable_to_non_nullable
@@ -119,8 +119,8 @@ class __$$_SplashPageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SplashPageState implements _SplashPageState {
-  _$_SplashPageState(
+class _$SplashPageStateImpl implements _SplashPageState {
+  _$SplashPageStateImpl(
       {this.navigatePageRoute = '/',
       this.bootState = BootState.none,
       this.currentState = const AsyncData(null)});
@@ -141,10 +141,10 @@ class _$_SplashPageState implements _SplashPageState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SplashPageState &&
+            other is _$SplashPageStateImpl &&
             (identical(other.navigatePageRoute, navigatePageRoute) ||
                 other.navigatePageRoute == navigatePageRoute) &&
             (identical(other.bootState, bootState) ||
@@ -160,15 +160,16 @@ class _$_SplashPageState implements _SplashPageState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SplashPageStateCopyWith<_$_SplashPageState> get copyWith =>
-      __$$_SplashPageStateCopyWithImpl<_$_SplashPageState>(this, _$identity);
+  _$$SplashPageStateImplCopyWith<_$SplashPageStateImpl> get copyWith =>
+      __$$SplashPageStateImplCopyWithImpl<_$SplashPageStateImpl>(
+          this, _$identity);
 }
 
 abstract class _SplashPageState implements SplashPageState {
   factory _SplashPageState(
       {final String navigatePageRoute,
       final BootState bootState,
-      final AsyncValue<void> currentState}) = _$_SplashPageState;
+      final AsyncValue<void> currentState}) = _$SplashPageStateImpl;
 
   @override
   String get navigatePageRoute;
@@ -178,6 +179,6 @@ abstract class _SplashPageState implements SplashPageState {
   AsyncValue<void> get currentState;
   @override
   @JsonKey(ignore: true)
-  _$$_SplashPageStateCopyWith<_$_SplashPageState> get copyWith =>
+  _$$SplashPageStateImplCopyWith<_$SplashPageStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

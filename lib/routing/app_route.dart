@@ -1,7 +1,9 @@
 enum AppRoute {
   boot,
   top,
-  article;
+  article,
+  draftNew,
+  ;
 
   const AppRoute();
 
@@ -13,6 +15,8 @@ enum AppRoute {
         return '/';
       case AppRoute.article:
         return '/articles/:id';
+      case AppRoute.draftNew:
+        return '/drafts/new';
     }
   }
 

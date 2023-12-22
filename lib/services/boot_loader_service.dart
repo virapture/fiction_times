@@ -19,9 +19,4 @@ class BootLoaderService implements ABootLoaderService {
       navigatePageRoute: AppRoute.top.path,
     );
   }
-
-  Future<String?> _decisionUniversalNavigatePage() async {
-    //todo 後々Universal遷移するページの判定を行う
-    return null;
-  }
 }
