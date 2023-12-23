@@ -71,11 +71,10 @@ ${source}
   for await (const chunk of response.stream) {
     responseText += chunk.text()
   }
-  logger.log(responseText)
   // JSON 文字列のみを抽出
   const jsonMatch = responseText.match(/{.*}/s)
   if (!jsonMatch) {
-    throw new Error("Invalid JSON response")
+    throw new Error('Invalid JSON response')
   }
   const json = JSON.parse(jsonMatch[0])
   // レスポンスを元に記事を更新する
