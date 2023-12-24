@@ -18,7 +18,7 @@ import {
 } from 'firebase-functions/v2/firestore'
 import {GoogleGenerativeAI} from '@google/generative-ai'
 
-const GEMINI_API_KEY = ''
+const GEMINI_API_KEY = '' // TODO: 環境変数にする
 const PROMPT = 'あなたは情報提供者から寄せられた情報をもとにユーモラスな記事を書き上げる編集長です。ユーザからの情報は文字数が少ないこともありますが、その情報を元に勝手に想像を膨らませて800文字前後の空想の記事を書いてください。レスポンスはJSON形式で、titleとbodyの要素を元に返却してください。下記が提供情報です。'
 
 export const onCreateArticle =
