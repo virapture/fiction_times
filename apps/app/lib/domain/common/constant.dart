@@ -1,1 +1,1 @@
-const defaultLimit = 20;
+const defaultLimit = 100;

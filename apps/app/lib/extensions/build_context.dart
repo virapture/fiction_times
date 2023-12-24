@@ -98,6 +98,11 @@ extension BuildContextExtension on BuildContext {
   void popToFirstPage() =>
       Navigator.of(this).popUntil((route) => route.isFirst);
 
+  void popToRootPage() {
+    popToFirstPage();
+    replace('/');
+  }
+
   T getArgs<T>() => ModalRoute.of(this)!.settings.arguments as T;
 
   void recordError(WidgetRef ref, dynamic error, StackTrace? stack) =>
