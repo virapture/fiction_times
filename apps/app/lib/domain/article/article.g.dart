@@ -17,6 +17,7 @@ _$ArticleImpl _$$ArticleImplFromJson(Map<String, dynamic> json) =>
       body: json['body'] as String? ?? '',
       reporter: json['reporter'] as String? ?? '',
       source: json['source'] as String? ?? '',
+      error: json['error'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$ArticleImplToJson(_$ArticleImpl instance) =>
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$ArticleImplToJson(_$ArticleImpl instance) =>
       'body': instance.body,
       'reporter': instance.reporter,
       'source': instance.source,
+      'error': instance.error,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

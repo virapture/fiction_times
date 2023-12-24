@@ -7,7 +7,7 @@ class LogoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/top_logo.webp',
+      'assets/logo.png',
       width: size,
     );
   }

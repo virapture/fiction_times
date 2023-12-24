@@ -31,6 +31,7 @@ mixin _$Article {
   String get body => throw _privateConstructorUsedError;
   String get reporter => throw _privateConstructorUsedError;
   String get source => throw _privateConstructorUsedError;
+  String get error => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +50,8 @@ abstract class $ArticleCopyWith<$Res> {
       String title,
       String body,
       String reporter,
-      String source});
+      String source,
+      String error});
 
   $FirestoreTimestampCopyWith<$Res> get createdAt;
   $FirestoreTimestampCopyWith<$Res> get updatedAt;
@@ -75,6 +77,7 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
     Object? body = null,
     Object? reporter = null,
     Object? source = null,
+    Object? error = null,
   }) {
     return _then(_value.copyWith(
       createdAt: null == createdAt
@@ -104,6 +107,10 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
       source: null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
+              as String,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -139,7 +146,8 @@ abstract class _$$ArticleImplCopyWith<$Res> implements $ArticleCopyWith<$Res> {
       String title,
       String body,
       String reporter,
-      String source});
+      String source,
+      String error});
 
   @override
   $FirestoreTimestampCopyWith<$Res> get createdAt;
@@ -165,6 +173,7 @@ class __$$ArticleImplCopyWithImpl<$Res>
     Object? body = null,
     Object? reporter = null,
     Object? source = null,
+    Object? error = null,
   }) {
     return _then(_$ArticleImpl(
       createdAt: null == createdAt
@@ -195,6 +204,10 @@ class __$$ArticleImplCopyWithImpl<$Res>
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as String,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -209,7 +222,8 @@ class _$ArticleImpl extends _Article {
       this.title = '',
       this.body = '',
       this.reporter = '',
-      this.source = ''})
+      this.source = '',
+      this.error = ''})
       : super._();
 
   factory _$ArticleImpl.fromJson(Map<String, dynamic> json) =>
@@ -236,10 +250,13 @@ class _$ArticleImpl extends _Article {
   @override
   @JsonKey()
   final String source;
+  @override
+  @JsonKey()
+  final String error;
 
   @override
   String toString() {
-    return 'Article(createdAt: $createdAt, updatedAt: $updatedAt, reference: $reference, title: $title, body: $body, reporter: $reporter, source: $source)';
+    return 'Article(createdAt: $createdAt, updatedAt: $updatedAt, reference: $reference, title: $title, body: $body, reporter: $reporter, source: $source, error: $error)';
   }
 
   @override
@@ -257,13 +274,14 @@ class _$ArticleImpl extends _Article {
             (identical(other.body, body) || other.body == body) &&
             (identical(other.reporter, reporter) ||
                 other.reporter == reporter) &&
-            (identical(other.source, source) || other.source == source));
+            (identical(other.source, source) || other.source == source) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, createdAt, updatedAt, reference,
-      title, body, reporter, source);
+      title, body, reporter, source, error);
 
   @JsonKey(ignore: true)
   @override
@@ -287,7 +305,8 @@ abstract class _Article extends Article {
       final String title,
       final String body,
       final String reporter,
-      final String source}) = _$ArticleImpl;
+      final String source,
+      final String error}) = _$ArticleImpl;
   const _Article._() : super._();
 
   factory _Article.fromJson(Map<String, dynamic> json) = _$ArticleImpl.fromJson;
@@ -309,6 +328,8 @@ abstract class _Article extends Article {
   String get reporter;
   @override
   String get source;
+  @override
+  String get error;
   @override
   @JsonKey(ignore: true)
   _$$ArticleImplCopyWith<_$ArticleImpl> get copyWith =>

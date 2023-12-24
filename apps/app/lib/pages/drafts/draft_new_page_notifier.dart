@@ -1,4 +1,5 @@
 import 'package:fiction_times_app/domain/article/article_repository.dart';
+import 'package:fiction_times_app/domain/common/app_exception.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../domain/article/article.dart';
@@ -23,6 +24,12 @@ class DraftNewPageNotifier extends StateNotifier<DraftNewPageState> {
       state = state.copyWith(current: const AsyncValue.loading());
       final article = await _articleRepository.createArticle(
           reporter: reporter ?? 'Anonymous', source: source);
+      if (article.error.isNotEmpty) {
+        final error = AppException(article.error!);
+        state = state.copyWith(
+            current: AsyncValue.error(error, StackTrace.current));
+        return null;
+      }
       state = state.copyWith(current: const AsyncValue.data(null));
       return article;
     } catch (e, stackTrace) {

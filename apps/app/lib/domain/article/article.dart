@@ -19,6 +19,7 @@ abstract class Article with _$Article, FirestoreCodable {
     @Default('') String body,
     @Default('') String reporter,
     @Default('') String source,
+    @Default('') String error,
   }) = _Article;
 
   const Article._();

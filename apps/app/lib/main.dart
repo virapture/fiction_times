@@ -56,7 +56,7 @@ class App extends ConsumerWidget {
       theme: OriginalTheme.themeData,
       routerConfig: goRouter,
       restorationScopeId: 'app',
-      onGenerateTitle: (context) => 'FictionTimes',
+      onGenerateTitle: (context) => 'Fiction Times',
       builder: (context, child) {
         return Stack(
           children: [
