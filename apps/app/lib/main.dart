@@ -20,13 +20,13 @@ Future<void> main() async {
       setPathUrlStrategy();
       await Firebase.initializeApp(
         options: const FirebaseOptions(
-            apiKey: "AIzaSyCb3PWh7KYBrsH2reipxx90rUWopWh3CmQ",
-            authDomain: "fiction-times-prod.firebaseapp.com",
-            projectId: "fiction-times-prod",
-            storageBucket: "fiction-times-prod.appspot.com",
-            messagingSenderId: "228149622742",
-            appId: "1:228149622742:web:ca35cee0d9c12723b41677",
-            measurementId: "G-S39VPQYBMC"),
+            apiKey: "",
+            authDomain: "",
+            projectId: "",
+            storageBucket: "",
+            messagingSenderId: "",
+            appId: "",
+            measurementId: ""),
       );
       FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
       runApp(const ProviderScope(child: App()));
