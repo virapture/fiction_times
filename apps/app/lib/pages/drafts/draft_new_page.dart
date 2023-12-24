@@ -14,8 +14,12 @@ class DraftNewPage extends HookConsumerWidget {
     final reporterController = useTextEditingController();
     final sourceController = useTextEditingController();
     final state = ref.watch(draftNewPageProvider);
-
     final isPosting = state.current is AsyncLoading;
+    ref.listen(draftNewPageProvider, (previous, next) {
+      if (previous?.current != next.current) {
+        context.showErrorDialogOrMessageToast(ref, next.current);
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -25,7 +29,7 @@ class DraftNewPage extends HookConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 600), // 最大幅を600に制限
+            constraints: const BoxConstraints(maxWidth: 600), // 最大幅を600に制限
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center, // 子要素を中央に寄せる
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +48,7 @@ class DraftNewPage extends HookConsumerWidget {
                   controller: sourceController,
                   decoration: const InputDecoration(
                     labelText: 'Article Source',
-                    hintText: '元ネタになる情報を入れてね。簡単なワードだけでも大丈夫だよ。',
+                    hintText: 'タレコミ情報を入れてね。簡単なワードだけでも大丈夫だよ。',
                   ),
                   maxLines: null,
                   minLines: 5,
@@ -73,17 +77,26 @@ class DraftNewPage extends HookConsumerWidget {
 
   Future<void> _postArticle(BuildContext context, WidgetRef ref,
       String reporter, String source) async {
-    await ref
+    final article = await ref
         .read(draftNewPageProvider.notifier)
         .postArticle(reporter: reporter, source: source);
-    if (!context.mounted) {
+    if (!context.mounted || article == null) {
       return;
     }
     // 投稿感謝のダイアログを表示したあとに画面遷移する
-    context.showSimple(
+    await context.showSimple(
       title: '投稿完了',
       content: '投稿が完了しました。ありがとうございます！',
     );
-    context.appGoNamed(AppRoute.top);
+    if (!context.mounted) {
+      return;
+    }
+    context.appGoNamed(
+      AppRoute.article,
+      params: {
+        'id': article.reference?.id ?? '',
+      },
+      extra: article,
+    );
   }
 }

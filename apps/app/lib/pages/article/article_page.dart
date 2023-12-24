@@ -1,4 +1,5 @@
 import 'package:fiction_times_app/domain/common/firestore_timestamp.dart';
+import 'package:fiction_times_app/extensions/build_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -31,6 +32,12 @@ class ArticlePage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(appBarTitle),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            context.popToRootPage();
+          },
+        ),
       ),
       body: state.article.when(
         loading: () => const CircularProgressIndicator(),
@@ -43,9 +50,18 @@ class ArticlePage extends HookConsumerWidget {
               children: [
                 Text(
                   article.title,
-                  style: Theme.of(context).textTheme.headline4?.copyWith(
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Published on ${article.createdAt.toDate().toLocal()}',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                Text(
+                  'Written by ${article.reporter}',
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(height: 10),
                 // TODO: 画像表示したい
@@ -58,14 +74,9 @@ class ArticlePage extends HookConsumerWidget {
                 const SizedBox(height: 10),
                 Text(
                   article.body,
-                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         height: 1.5,
                       ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Published on ${article.createdAt.toDate().toLocal()}',
-                  style: Theme.of(context).textTheme.caption,
                 ),
               ],
             ),

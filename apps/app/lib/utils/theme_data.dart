@@ -9,15 +9,15 @@ class OriginalTheme {
       bodyMedium: TextStyle(color: Color(0xff666666)),
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: backgroundPrimary,
+      backgroundColor: backgroundQuaternary,
       centerTitle: true,
       elevation: 1,
       shadowColor: dividerPrimary,
-      iconTheme: IconThemeData(color: fillPrimary),
+      iconTheme: IconThemeData(color: Colors.white),
       actionsIconTheme: IconThemeData(color: link),
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: Colors.white,
         fontSize: 17,
       ),
     ),
@@ -40,6 +40,7 @@ class OriginalTheme {
     dividerColor: dividerPrimary,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: accent,
+      foregroundColor: Colors.white,
       iconSize: 30,
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(

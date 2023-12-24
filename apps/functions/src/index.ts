@@ -56,30 +56,52 @@ function getDefaultDocumentOptions(
 
 // gemini proにリクエストを投げて、articleを更新する
 async function updateArticleByGeminiPro(queryDocumentSnapshot: QueryDocumentSnapshot) {
-  const data = queryDocumentSnapshot.data()
-  const source = data.source as string
-  // gemini proにユーモラスな記事を書いてもらう
-  const ai = new GoogleGenerativeAI(GEMINI_API_KEY)
-  const model = ai.getGenerativeModel({model: 'gemini-pro'})
-  const prompt = `${PROMPT}
+  try {
+    const data = queryDocumentSnapshot.data()
+    const source = data.source as string
+    // gemini proにユーモラスな記事を書いてもらう
+    const ai = new GoogleGenerativeAI(GEMINI_API_KEY)
+    const model = ai.getGenerativeModel({model: 'gemini-pro'})
+    const prompt = `${PROMPT}
 \`\`\`
 ${source}
 \`\`\`
 `
-  const response = await model.generateContentStream(prompt)
-  let responseText = ''
-  for await (const chunk of response.stream) {
-    responseText += chunk.text()
+    const response = await model.generateContentStream(prompt)
+    let responseText = ''
+    for await (const chunk of response.stream) {
+      responseText += chunk.text()
+    }
+    const json = createJson(responseText)
+    // レスポンスを元に記事を更新する
+    await queryDocumentSnapshot.ref.update({
+      title: json.title,
+      body: json.body,
+    })
+  } catch (error) {
+    logger.error(error)
+    if (error instanceof Error) {
+      await queryDocumentSnapshot.ref.update({
+        error: `${error.name}\n${error.message}`,
+      })
+    }
   }
-  // JSON 文字列のみを抽出
-  const jsonMatch = responseText.match(/{.*}/s)
+}
+
+function createJson(text: string) {
+  const jsonMatch = text.match(/{[\s\S]*}/s)
   if (!jsonMatch) {
+    logger.error(text)
     throw new Error('Invalid JSON response')
   }
-  const json = JSON.parse(jsonMatch[0])
-  // レスポンスを元に記事を更新する
-  queryDocumentSnapshot.ref.update({
-    title: json.title,
-    body: json.body,
-  })
+  try {
+    // ""内の改行を\nに変換する
+    const data = jsonMatch[0].replace(/"([^"]*)"/g, (match) => {
+      return match.replace(/\n/g, '\\n')
+    })
+    return JSON.parse(data)
+  } catch (e) {
+    logger.error(jsonMatch[0])
+    throw e
+  }
 }
