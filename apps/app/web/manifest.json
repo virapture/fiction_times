@@ -1,11 +1,11 @@
 {
-    "name": "fiction_times_app",
-    "short_name": "fiction_times_app",
+    "name": "Fiction Times",
+    "short_name": "Fiction Times",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "タレコミされた情報からAI編集長がユーモラスな記事を書いてくれるメディアです。※記事は全てフィクションです。",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

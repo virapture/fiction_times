@@ -14,4 +14,15 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-# fiction_times_app
+
+## how to build
+
+```sh
+flutter build web --release --dart-define=FLAVOR=prod
+```
+
+## how to deploy
+
+```sh
+firebase deploy
+```

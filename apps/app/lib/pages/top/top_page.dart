@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../extensions/build_context.dart';
 import '../../routing/app_route.dart';
+import '../../widgets/platfrom_aware_asset_image.dart';
 import 'top_page_notifier.dart';
 
 class TopPage extends HookConsumerWidget {
@@ -30,8 +31,8 @@ class TopPage extends HookConsumerWidget {
                 top: MediaQuery.of(context).padding.top,
               ),
               child: Center(
-                child: Image.asset(
-                  'logo.png',
+                child: PlatformAwareAssetImage(
+                  assetPath: 'logo.png',
                   height: constraints.maxHeight -
                       MediaQuery.of(context).padding.top, // AppBarの高さに合わせて調整
                 ),
