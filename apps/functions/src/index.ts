@@ -11,12 +11,8 @@
  */
 
 import {logger} from 'firebase-functions/v2'
-import {
-  DocumentOptions,
-  QueryDocumentSnapshot,
-  onDocumentCreated,
-} from 'firebase-functions/v2/firestore'
-import {GoogleGenerativeAI} from '@google/generative-ai'
+import {DocumentOptions, onDocumentCreated, QueryDocumentSnapshot} from 'firebase-functions/v2/firestore'
+import {GoogleGenerativeAI, HarmBlockThreshold, HarmCategory} from '@google/generative-ai'
 
 const GEMINI_API_KEY = '' // TODO: 環境変数にする
 const PROMPT = 'あなたは情報提供者から寄せられた情報をもとにユーモラスな記事を書き上げる編集長です。ユーザからの情報は文字数が少ないこともありますが、その情報を元に勝手に想像を膨らませて800文字前後の空想の記事を書いてください。レスポンスはJSON形式で、titleとbodyの要素を元に返却してください。下記が提供情報です。'
@@ -61,7 +57,15 @@ async function updateArticleByGeminiPro(queryDocumentSnapshot: QueryDocumentSnap
     const source = data.source as string
     // gemini proにユーモラスな記事を書いてもらう
     const ai = new GoogleGenerativeAI(GEMINI_API_KEY)
-    const model = ai.getGenerativeModel({model: 'gemini-pro'})
+    const model = ai.getGenerativeModel({
+      model: 'gemini-pro',
+      safetySettings: [
+        {category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE},
+        {category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE},
+        {category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE},
+        {category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_NONE},
+      ],
+    })
     const prompt = `${PROMPT}
 \`\`\`
 ${source}
