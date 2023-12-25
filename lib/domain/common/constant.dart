@@ -1,1 +1,0 @@
-const defaultLimit = 20;
